@@ -78,6 +78,7 @@ def get_bourbons(bourbon_name: str = 'jack daniels', skip:int = None) -> pd.Data
 
     full_frame = pd.concat(detail_frame).reset_index(drop=True) if len(detail_frame) != 0 else pd.DataFrame
     return full_frame
+ 
 
 
 def get_all_bourbons(bourbon_name: str = "jack daniels"): 

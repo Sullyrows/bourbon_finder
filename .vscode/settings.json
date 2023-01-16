@@ -1,10 +1,10 @@
 {
     "python.defaultInterpreterPath": "./bourbon/.venv/bin/python3",
     "terminal.integrated.env.osx": {
-        "PATH": "${env:PATH}:${workspaceFolder}/bourbon/.venv/bin"
+        "PATH": "${env:PATH}:${workspaceFolder}/bourbon/.venv/bin",
     },
     "terminal.integrated.env.windows": {
-        "PATH": "${env:PATH};${workspaceFolder}/bourbon/.venv/bin"
+        "PATH": "${env:PATH};${workspaceFolder}/bourbon/.venv/bin",
     },
-
+    "jupyter.notebookFileRoot": "${workspaceFolder}/bourbon",
 }

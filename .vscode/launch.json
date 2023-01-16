@@ -7,7 +7,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "envFile": "${workspaceFolder}/dev.env",
+            "envFile": "${workspaceFolder}/.env",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}"
             }
