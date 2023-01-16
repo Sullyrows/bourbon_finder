@@ -10,40 +10,6 @@ def check_invisible_ele(page: Page):
     )
     return ele_avail
 
-
-def old_run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context()
-
-    page = context.new_page()
-
-    page.goto("https://www.buffalotracedistillery.com/product-availability")
-
-    page.get_by_role("button", name="Yes").click()
-
-    # list selector 
-    img_selector = "img[class=\"cmp-image__image\"]"
-    title_selector = "div > div.title.section > div > h3"
-    avail_selector = "div.cmp-htmlblock > div.product-availability-text > h4.product-is-available"
-
-
-    page.wait_for_selector(title_selector, timeout=6*1000)
-
-    # get elements 
-    update_time = page.locator("#container-eed96a5a0f > div > div:nth-child(2) > div > h2").text_content()
-    titles = [x.text_content() for x in page.query_selector_all(title_selector)]
-    img_comp = [f'http://buffalotracedistillery.com/{x.get_attribute("src")}' for x in page.query_selector_all(img_selector)]
-
-    # determine availability
-    product_availability = [not x.is_hidden() for x in page.query_selector_all(avail_selector)]
-
-    page.get_by_role("heading", name="Sold Out").first.dblclick()
-
-    # ---------------------
-    context.close()
-    browser.close()
-
-
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
