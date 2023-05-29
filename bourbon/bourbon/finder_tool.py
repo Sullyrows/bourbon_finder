@@ -1,6 +1,6 @@
 from importlib import resources 
 import pandas as pd 
-from bourbon.get_bourbon import get_all_bourbons
+from bin.get_bourbon import get_all_bourbons
 
 # get values of dataframe 
 with resources.path("my_data","bourbons.csv") as f: 

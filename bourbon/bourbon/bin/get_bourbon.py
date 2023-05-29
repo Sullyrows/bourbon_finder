@@ -109,6 +109,3 @@ def get_all_bourbons(bourbon_name: str = "jack daniels"):
     flatten_df = pd.concat(_out_data).reset_index(drop=True)
     return flatten_df
 
-if __name__ == "__main__": 
-    test_bourbons = get_all_bourbons('blantons')
-    print(test_bourbons)

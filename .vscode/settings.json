@@ -7,4 +7,49 @@
         "PATH": "${env:PATH};${workspaceFolder}/bourbon/.venv/bin",
     },
     "jupyter.notebookFileRoot": "${workspaceFolder}/bourbon",
+    "terminal.integrated.profiles.osx": {
+        "bash": {
+            "path": "bash",
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal-bash"
+        },
+        "Python Debug Console" : {
+            "path": "bash",
+            "color": "terminal.ansiGreen"
+        },
+        "prefect_agent": {
+            "path": "bash",
+            "args": [
+                "${workspaceFolder}/batch/prefect_agent.bash"
+            ],
+            "icon": "server",
+            "color": "terminal.ansiBlue",
+            "overrideName": true
+        },
+        "prefect_remote": {
+            "path": "bash",
+            "args": [
+                "${workspaceFolder}/batch/prefect_agent_remote.bash"
+            ],
+            "icon": "server",
+            "color": "terminal.ansiBlue",
+            "overrideName": true
+        },
+        "prefect_dash": {
+            "path": "bash",
+            "args": [
+                "${workspaceFolder}/batch/prefect_orion.bash"
+            ],
+            "icon": "dashboard",
+            "color": "terminal.ansiBlue",
+            "overrideName": true
+        }
+    },
+    "python.testing.pytestArgs": [
+        "bourbon"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

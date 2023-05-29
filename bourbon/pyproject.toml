@@ -12,9 +12,11 @@ pandas = "^1.5.1"
 bs4 = "^0.0.1"
 playwright = "^1.27.1"
 slimit = "^0.8.1"
-python-dotenv = "^0.21.0"
+python-dotenv = "^0.21.1"
 sqlalchemy = "^1.4.46"
-prefect = "^2.7.8"
+prefect = "^2.7.12"
+pytest = "^7.3.1"
+pytest-asyncio = "^0.21.0"
 
 
 [tool.poetry.group.dev.dependencies]

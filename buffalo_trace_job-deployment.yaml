@@ -1,0 +1,40 @@
+###
+### A complete description of a Prefect Deployment for flow 'buffalo_trace_job'
+###
+name: buffalo_trace_remote
+description: scrape data on product availability
+version: 12071cc663f64d7139d375b8b92fc21e
+# The work queue that will handle this deployment's runs
+work_queue_name: test
+work_pool_name: null
+work_pool_queue_name: null
+tags: []
+parameters: {}
+schedule: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: buffalo_trace_job
+manifest_path: null
+storage: null
+path: /Users/joe/Documents/Python/bourbon_finder
+entrypoint: bourbon/bourbon/buffalo_trace.py:buffalo_trace_job
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties: {}
+  required: null
+  definitions: null
+timestamp: '2023-01-19T04:48:30.995141+00:00'
