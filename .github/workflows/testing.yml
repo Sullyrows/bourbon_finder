@@ -59,6 +59,7 @@ jobs:
         run: |
           cd ./bourbon
           source .venv/bin/activate
+          echo “::add-path::./bourbon” 
           .venv/bin/python3 bourbon/bin/run_buffalo_trace.py
 
           
