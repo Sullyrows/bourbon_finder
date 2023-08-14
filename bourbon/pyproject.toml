@@ -19,6 +19,8 @@ pytest = "^7.3.1"
 pytest-asyncio = "^0.21.0"
 
 
+
+
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.17.1"
 plotly = "^5.12.0"
