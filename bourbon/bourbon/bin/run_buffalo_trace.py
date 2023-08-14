@@ -13,7 +13,7 @@ with resources.path("bourbon.logs","main_buffalo_trace.log") as f:
 async def main_buffalo_trace() -> pd.DataFrame: 
     async with async_playwright() as playwright: 
         browser = await playwright.chromium.launch(
-            headless=False
+            headless=True
         )
         my_context =  await browser.new_context()
         my_page = await my_context.new_page()
@@ -29,7 +29,9 @@ if __name__ == "__main__":
     policy = asyncio.get_event_loop_policy()
     loop = policy.get_event_loop()
 
-    new_products = loop.run_until_complete(main_buffalo_trace())
+    new_products = loop.run_until_complete(
+        main_buffalo_trace()
+    )
 
     loop.close()
 
@@ -43,6 +45,16 @@ if __name__ == "__main__":
                 sql_version = conn.execute(sqlalchemy.text("select sqlite_version()")).fetchone()[0]
 
                 logger.info(f"Sqlalchemy running on version {sql_version}")
+    
+            # get last updated datetime 
+            latest_update_time = conn.execute(
+                sqlalchemy.text("select MAX(product_update_time) from buffalo_trace")
+            ).fetchone()[0]
 
-    new_products.to_sql(name='buffalo_trace', con=engine, if_exists='append')
-    logger.info(f"wrote {len(new_products.index)} rows")
+            if latest_update_time != new_products.loc[0,'product_update_time']:
+                logger.info('no new rows to upload')
+            else: 
+                logger.info("uploading new rows")
+
+                new_products.to_sql(name='buffalo_trace', con=engine, if_exists='append')
+                logger.info(f"wrote {len(new_products.index)} rows")
