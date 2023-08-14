@@ -1,4 +1,5 @@
 from playwright.sync_api import Playwright, sync_playwright
+from playwright.async_api import async_playwright, expect
 import pandas as pd 
 from sys import stdout, stderr
 from importlib import resources 

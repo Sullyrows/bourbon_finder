@@ -2,10 +2,11 @@ import logging
 from pathlib import Path
 from sys import stdout, stderr
 import pandas as pd 
-from playwright.sync_api import Playwright, Page
+from playwright.sync_api import Playwright, Page, expect
 from importlib import resources
 import datetime as dt 
 import re
+from warnings import warn
 
 def setup_log(log_path: Path, logger_name = __name__): 
     
@@ -38,22 +39,24 @@ def setup_log(log_path: Path, logger_name = __name__):
 # test logger config 
 with resources.path("bourbon.logs","utility.log") as f: 
     log_path = f.absolute()
+
 logger = setup_log(
     log_path = log_path, 
-    logger_name = __name__
+    logger_name = 'utility'
 )
 
-
-async def buffalo_trace_avail(my_page: Playwright): 
-
+async def go_to_buffalo_trace(my_page: Page): 
     await my_page.goto("https://www.buffalotracedistillery.com/product-availability")
 
+
+async def buffalo_trace_avail(my_page: Page):
+
+    await my_page.wait_for_load_state('networkidle')
 
     await my_page.get_by_role("button", name="Yes").click()
 
     # selector 
-    img_sel = "div > div > div.image.section > div > img"
-    title_sel = "div > div > div.title.section > div.cmp-title > h3"
+    title_sel = "div.cmp-title > h3"
     avail_sel = "div > div > div.htmlblock.section > div > div.product-availability-text > h4.product-is-available"
 
     # the time updated
@@ -74,38 +77,46 @@ async def buffalo_trace_avail(my_page: Playwright):
     product_title = []
     product_image = []
     product_available = []
+    _t_list = []
 
     # parent selector
-    element_sel = "div#product-availability-bottle-container > div > div.container.section"
-    my_queried_elements = await my_page.query_selector_all(element_sel)
-    for ind, ele in enumerate(my_queried_elements): 
-        # image via property 
-        image_prop_1 = await ele.query_selector('div > div > div.image.section > div.cmp-image')
-        image_prop = image_prop_1.get_attribute('data-asset')
-        image_link = f"http://buffalotracedistillery.com{image_prop}"
-        title = await ele.query_selector(title_sel)
-        title = title.text_content()
-        # check url computed value in evaluate loop context
-        avail_frame = await ele.query_selector(".product-availability-icon")
+    element_sel = "div.container.section.container--justify-center > div.cmp-container.cmp-container__responsive"
+
+    query_ele = my_page.locator(element_sel)
+    num_elements = await query_ele.count()
+    ele_frame = [query_ele.nth(x) for x in range(0,num_elements)]
+    for ind, ele in enumerate(ele_frame): 
+        image_prop = ele.locator("div.product-availability-icon")
+        await my_page.wait_for_selector(selector="div.product-availability-icon",timeout=2000)
+        title_present = await image_prop.is_visible()
+
+        if not title_present:
+            continue
+
+        image_prop = ele.locator('div.product-availability-icon')
+        image_value = await image_prop.get_attribute("data-asset")
+        image_link = f"http://buffalotracedistillery.com{image_value}"
+
+        title = ele.locator(title_sel)
+        print(await title.is_visible())
+
+        # get computed for availablility
+        avail_frame = ele.locator(".product-availability-icon")
         computed_value = await avail_frame.evaluate(js_fx, {"element": avail_frame})
-        product_avail_flag = computed_value == 'url("https://www.buffalotracedistillery.com/content/dam/buffalotracedistillery/landing-pages/product-availability/images/product-availability-available.png")'
+        product_avail_flag = (computed_value == 'url("https://www.buffalotracedistillery.com/content/dam/buffalotracedistillery/landing-pages/product-availability/images/product-availability-available.png")')
 
-        product_title.append(title)
-        product_image.append(image_link)
-        product_available.append(product_avail_flag)
+        _t_list.append({
+            "product_title": await title.inner_text(),
+            "product_update_time": full_parse,
+            "product_avail": product_avail_flag
+        })
 
-    output_df = pd.DataFrame({
-        "product_title": product_title,
-        "update_date": full_parse,
-        "product_available": product_available
-    })
 
-    product_df = pd.DataFrame({
-        "product_title": product_title,
-        "product_image": product_image
-    })
+    out_df = pd.DataFrame(_t_list)
+    out_df["data_update_time"] = dt.datetime.now()
 
-    return(output_df, product_df)
+    return out_df
+
 
 
 # individual run function
