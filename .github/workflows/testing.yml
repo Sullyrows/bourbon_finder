@@ -50,7 +50,7 @@ jobs:
       - name: install playwright
         run: |
            cd ./bourbon
-           PLAY_PATH="/Users/joe/Documents/Python/bourbon_finder/bourbon/.venv/bin/playwright"
+           PLAY_PATH=".venv/bin/playwright"
            $PLAY_PATH install 
       #----------------------------------------------
       #              run test suite
