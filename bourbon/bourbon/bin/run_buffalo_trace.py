@@ -11,6 +11,7 @@ with resources.path("bourbon.logs","main_buffalo_trace.log") as f:
 
 
 async def main_buffalo_trace() -> pd.DataFrame: 
+    """setup browser and download buffalo trace"""
     async with async_playwright() as playwright: 
         browser = await playwright.chromium.launch(
             headless=True
