@@ -58,12 +58,8 @@ jobs:
       #----------------------------------------------
       - name: pythonpath extension
         run: |
-          echo "GITHUB_WORKSPACE $GITHUB_WORKSPACE";
           # add to pythonpath: 
-          PYTHONPATH="${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/bourbon/bourbon";
-
-          echo "PWD: $PWD";
-          echo "PYTHONPATH: $PYTHONPATH";
+          echo "PYTHONPATH=$PYTHONPATH:${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/bourbon/bourbon" >> $GITHUB_ENV
 
           # TEST directory existing 
           if [ -d "${GITHUB_WORKSPACE}/bourbon" ]; then
@@ -75,7 +71,7 @@ jobs:
       - name: Run tests
         run: |
           # add to pythonpath;
-          PYTHONPATH="${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/bourbon/bourbon";
+          echo "PYTHONPATH=$PYTHONPATH:${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/bourbon/bourbon" >> $GITHUB_ENV
 
           echo $PYTHONPATH;
 
