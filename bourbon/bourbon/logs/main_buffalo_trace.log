@@ -14,3 +14,6 @@
 [04:05:31] {/home/runner/work/bourbon_finder/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:48} INFO - Sqlalchemy running on version 3.37.2
 [04:05:31] {/home/runner/work/bourbon_finder/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:58} INFO - uploading new rows
 [04:05:31] {/home/runner/work/bourbon_finder/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:61} INFO - wrote 8 rows
+[23:45:55] {/Users/joe/Documents/Python/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:47} INFO - Sqlalchemy running on version 3.35.5
+[23:45:55] {/Users/joe/Documents/Python/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:64} INFO - uploading new rows
+[23:45:55] {/Users/joe/Documents/Python/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:69} INFO - wrote 8 rows
