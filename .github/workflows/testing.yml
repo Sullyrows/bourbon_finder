@@ -51,16 +51,26 @@ jobs:
         run: |
            cd ./bourbon
            PLAY_PATH=".venv/bin/playwright"
-           $PLAY_PATH install 
+           $PLAY_PATH install chromium
+
+      #----------------------------------------------
+      #          test pythonpath extension
+      #----------------------------------------------
+      - name: pythonpath extension
+        run: |
+          # add to pythonpath: 
+          PYTHONPATH="$GITHUB_WORKSPACE/bourbon:$GITHUB_WORKSPACE/:$GITHUB_WORKSPACE/bourbon/bourbon/"
+
+          echo $PYTHONPATH;
       #----------------------------------------------
       #              run test suite
       #----------------------------------------------
       - name: Run tests
         run: |
           # add to pythonpath;
-          PYTHONPATH="$GITHUB_WORKSPACE/bourbon:$GITHUB_WORKSPACE/:$GITHUB_WORKSPACE/bourbon/bourbon/"
+          PYTHONPATH="$GITHUB_WORKSPACE/bourbon:$GITHUB_WORKSPACE/:$GITHUB_WORKSPACE/bourbon/bourbon/";
 
-          echo $PYTHONPATH
+          echo $PYTHONPATH;
 
           cd ./bourbon;
           source .venv/bin/activate;
