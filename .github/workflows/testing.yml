@@ -42,19 +42,16 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: |
            cd ./bourbon
-           poetry install --no-interaction --no-root
+           poetry install --without ds,dev --no-interaction --no-root
     
       #----------------------------------------------
       #             install poetry
       #----------------------------------------------
-      - name: install playwright
+      - name: install playwright drivers
         run: |
            cd ./bourbon
            PLAY_PATH=".venv/bin/playwright"
            $PLAY_PATH install 
-  run-job:
-    runs-on: ubuntu-latest
-    steps:
       #----------------------------------------------
       #              run test suite
       #----------------------------------------------
