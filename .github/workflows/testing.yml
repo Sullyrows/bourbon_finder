@@ -3,6 +3,11 @@ name: scrape buffalo trace
 on:
   schedule:
     - cron: "*/10 6-17 * * *"
+  push: 
+    branches: 
+      - main
+      - actions-based 
+
 
 jobs:
   build-dependencies:
