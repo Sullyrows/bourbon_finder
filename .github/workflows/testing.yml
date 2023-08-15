@@ -62,6 +62,7 @@ jobs:
           # add to pythonpath: 
           PYTHONPATH="./bourbon:./:./bourbon/bourbon/";
 
+          echo $PWD
           echo $PYTHONPATH;
       #----------------------------------------------
       #              run test suite
