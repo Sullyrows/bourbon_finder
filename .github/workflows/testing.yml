@@ -2,7 +2,7 @@ name: scrape buffalo trace
 
 on:
   schedule:
-    - cron: "*/10 6-17 * * *"
+    - cron: "*/20 7-17 * * *"
   push: 
     branches: 
       - main
