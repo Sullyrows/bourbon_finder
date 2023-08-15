@@ -1,6 +1,8 @@
-name: test
+name: scrape buffalo trace
 
-on: push
+on:
+  schedule:
+    - cron: "*/10 6-17 * * *"
 
 jobs:
   build-dependencies:
@@ -81,6 +83,8 @@ jobs:
 
       - name: Commit Changes
         run: |
+          git config --global user.email "sullyrows@gmail.com"
+          git config --global user.name "Joe Sullivan"
           git commit -am "new sql data"
           git push
 
