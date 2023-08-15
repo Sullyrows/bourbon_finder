@@ -60,7 +60,7 @@ jobs:
         run: |
           echo $GITHUB_WORKSPACE
           # add to pythonpath: 
-          PYTHONPATH="${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}/:${GITHUB_WORKSPACE}/bourbon/bourbon/";
+          PYTHONPATH="${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/bourbon/bourbon";
 
           echo $PWD
           echo $PYTHONPATH;
@@ -70,7 +70,7 @@ jobs:
       - name: Run tests
         run: |
           # add to pythonpath;
-          PYTHONPATH="${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}/:${GITHUB_WORKSPACE}/bourbon/bourbon/";
+          PYTHONPATH="${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/bourbon/bourbon";
 
           echo $PYTHONPATH;
 

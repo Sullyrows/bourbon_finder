@@ -4,3 +4,5 @@
 [00:17:57] {/Users/joe/Documents/Python/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:47} INFO - Sqlalchemy running on version 3.35.5
 [00:18:46] {/Users/joe/Documents/Python/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:47} INFO - Sqlalchemy running on version 3.35.5
 [00:18:46] {/Users/joe/Documents/Python/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:55} INFO - no new rows to upload
+[19:36:33] {/Users/joe/Documents/Python/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:48} INFO - Sqlalchemy running on version 3.35.5
+[19:36:33] {/Users/joe/Documents/Python/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:56} INFO - no new rows to upload
