@@ -58,8 +58,9 @@ jobs:
       #----------------------------------------------
       - name: pythonpath extension
         run: |
+          echo $GITHUB_WORKSPACE
           # add to pythonpath: 
-          PYTHONPATH="${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}/:${GITHUB_WORKSPACE}/bourbon/bourbon/";
+          PYTHONPATH="./bourbon:./:./bourbon/bourbon/";
 
           echo $PYTHONPATH;
       #----------------------------------------------

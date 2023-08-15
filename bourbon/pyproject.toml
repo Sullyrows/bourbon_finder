@@ -2,7 +2,7 @@
 name = "bourbon"
 version = "0.1.0"
 description = ""
-authors = ["Sullyrows <Sullyrows@gmail.com>"]
+authors = ["Sullyrows <sullyrows@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
