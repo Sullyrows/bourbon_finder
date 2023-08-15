@@ -3,7 +3,7 @@ name: test
 on: push
 
 jobs:
-  deploy:
+  build-dependencies:
     runs-on: ubuntu-latest
     steps:
       #----------------------------------------------
@@ -52,14 +52,21 @@ jobs:
            cd ./bourbon
            PLAY_PATH=".venv/bin/playwright"
            $PLAY_PATH install 
+  run-job:
+    runs-on: ubuntu-latest
+    steps:
       #----------------------------------------------
       #              run test suite
       #----------------------------------------------
       - name: Run tests
         run: |
-          cd ./bourbon
-          source .venv/bin/activate
-          echo “::add-path::./bourbon” 
-          .venv/bin/python3 bourbon/bin/run_buffalo_trace.py
+          # add to pythonpath;
+          PYTHONPATH="$GITHUB_WORKSPACE/bourbon:$GITHUB_WORKSPACE/:$GITHUB_WORKSPACE/bourbon/bourbon/"
+
+          echo $PYTHONPATH
+
+          cd ./bourbon;
+          source .venv/bin/activate;
+          .venv/bin/python3 bourbon/bin/run_buffalo_trace.py;
 
           
