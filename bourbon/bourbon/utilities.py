@@ -87,6 +87,6 @@ async def buffalo_trace_avail(my_page: Page) -> pd.DataFrame:
     out_df = pd.DataFrame(df_list)
     out_df["data_update_time"] = dt.datetime.now()
 
-    logger.debug(f"output dataframe has shape: {out_df.shape()}")
+    logger.debug(f"output dataframe has shape: {out_df.shape}")
 
     return out_df
