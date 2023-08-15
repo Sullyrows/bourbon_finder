@@ -78,7 +78,7 @@ jobs:
           # add to pythonpath;
           echo "PYTHONPATH=$PYTHONPATH:${GITHUB_WORKSPACE}/bourbon:${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/bourbon/bourbon" >> $GITHUB_ENV
 
-          echo $PYTHONPATH;
+          echo "new python path: $PYTHONPATH";
 
           cd ./bourbon;
           source .venv/bin/activate;

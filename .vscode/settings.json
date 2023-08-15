@@ -55,5 +55,5 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "python.formatting.provider": "none"
+    "python.envFile": "${workspaceFolder}/.env"
 }
