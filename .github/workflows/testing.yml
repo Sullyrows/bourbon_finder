@@ -1,11 +1,11 @@
 name: scrape buffalo trace
 
 on:
-  schedule:
-    - cron: "*/20 7-17 * * *"
   push: 
     branches: 
       - main
+  schedule:
+    - cron: "*/20 6-17 * * *"
 
 jobs:
   run-scraper:
@@ -52,7 +52,7 @@ jobs:
            poetry install --without ds,dev --no-interaction --no-root
     
       #----------------------------------------------
-      #           install poetry or cache
+      #           install playwright or cache
       #----------------------------------------------
       - name: cache playwright drivers
         id: cached-playwright-drivers
