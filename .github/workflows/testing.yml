@@ -16,13 +16,13 @@ jobs:
       #----------------------------------------------
       - name: Check out repository
         uses: actions/checkout@v3
-        with:
-          persist-credentials: false
+        # with:
+        #   persist-credentials: false
       - name: Set up python
         id: setup-python
         uses: actions/setup-python@v4
-        # with:
-        #   python-version: '3.11'
+        with:
+          python-version: '3.11'
       #----------------------------------------------
       #  -----  install & configure poetry  -----
       #----------------------------------------------
