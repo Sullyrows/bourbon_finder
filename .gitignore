@@ -4,3 +4,5 @@ logs/*
 .venv/
 logs/*
 .DS_Store
+.env
+example.env
