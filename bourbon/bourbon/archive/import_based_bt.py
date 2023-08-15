@@ -8,7 +8,7 @@ import datetime as dt
 from os import environ
 from prefect import task, Flow, flow
 from prefect.orion.schemas.schedules import CronSchedule
-from bourbon.utilities import setup_log, run
+from get_buffalo_trace import setup_log, run
 
 with resources.path("bourbon.logs",f"buffalo_trace_{dt.datetime.now().strftime('%Y%m01')}.log") as f: 
     log_path = f.absolute()
