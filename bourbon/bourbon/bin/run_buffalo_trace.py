@@ -55,6 +55,7 @@ if __name__ == "__main__":
             ).fetchone()[0]
 
             new_data_flag = (
+                # noqa: E501
                 latest_update_time == new_products.loc[0, "product_update_time"]
             )
 

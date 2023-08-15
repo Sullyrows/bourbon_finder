@@ -40,7 +40,7 @@ jobs:
         id: cached-poetry-dependencies
         uses: actions/cache@v3
         with:
-          path: .venv
+          path: ${GITHUB_WORKSPACE}/bourbon/.venv
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       #----------------------------------------------
       # install dependencies if cache does not exist
@@ -52,9 +52,16 @@ jobs:
            poetry install --without ds,dev --no-interaction --no-root
     
       #----------------------------------------------
-      #             install poetry
+      #           install poetry or cache
       #----------------------------------------------
+      - name: cache playwright drivers
+        id: cached-playwright-drivers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('~/.cache/ms-playwright') }}
       - name: install playwright drivers
+        if: steps.cached-playwright-drivers.outputs.cache-hit != 'true'
         run: |
            cd ./bourbon
            PLAY_PATH=".venv/bin/playwright"
