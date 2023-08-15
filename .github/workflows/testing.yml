@@ -41,14 +41,18 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${GITHUB_WORKSPACE}/bourbon/.venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}
+
+      - name: check path for use of .venv 
+        run: |
+          echo "${GITHUB_WORKSPACE}/bourbon/.venv"
       #----------------------------------------------
       # install dependencies if cache does not exist
       #----------------------------------------------
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: |
-           cd ./bourbon
+           cd ${GITHUB_WORKSPACE}/bourbon
            poetry install --without ds,dev --no-interaction --no-root
     
       #----------------------------------------------
