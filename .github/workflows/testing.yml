@@ -79,4 +79,9 @@ jobs:
           source .venv/bin/activate;
           .venv/bin/python3 bourbon/bin/run_buffalo_trace.py;
 
+      - name: Commit Changes
+        run: |
+          git commit -am "new sql data"
+          git push
+
           

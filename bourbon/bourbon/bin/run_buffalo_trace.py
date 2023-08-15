@@ -52,7 +52,7 @@ if __name__ == "__main__":
                 sqlalchemy.text("select MAX(product_update_time) from buffalo_trace")
             ).fetchone()[0]
 
-            if latest_update_time != new_products.loc[0,'product_update_time']:
+            if latest_update_time == new_products.loc[0,'product_update_time']:
                 logger.info('no new rows to upload')
             else: 
                 logger.info("uploading new rows")
