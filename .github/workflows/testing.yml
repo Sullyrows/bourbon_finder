@@ -50,7 +50,9 @@ jobs:
         run: |
            cd ${GITHUB_WORKSPACE}/bourbon
            poetry install --without ds,dev --no-interaction --no-root
-    
+      - name: Check Location
+        run: |
+          echo "${GITHUB_WORKSPACE}/bourbon/.venv"
       #----------------------------------------------
       #           install playwright or cache
       #----------------------------------------------
