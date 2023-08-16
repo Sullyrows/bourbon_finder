@@ -40,12 +40,8 @@ jobs:
         id: cached-poetry-dependencies
         uses: actions/cache@v3
         with:
-          path: ${GITHUB_WORKSPACE}/bourbon/.venv
+          path: /home/runner/work/bourbon_finder/bourbon_finder/bourbon/.venv
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}
-
-      - name: check path for use of .venv 
-        run: |
-          echo "${GITHUB_WORKSPACE}/bourbon/.venv"
       #----------------------------------------------
       # install dependencies if cache does not exist
       #----------------------------------------------
