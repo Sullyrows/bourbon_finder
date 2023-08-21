@@ -53,14 +53,15 @@ if __name__ == "__main__":
             latest_update_time = conn.execute(
                 update_time_txt
             ).fetchone()[0]
+            latest_update_time = pd.to_datetime(latest_update_time)
 
             product_time = new_products.loc[0, "product_update_time"]
-            new_data_flag = (
+            no_new_data_flag = (
                 # noqa: E501
                 latest_update_time == product_time
             )
 
-            if new_data_flag:
+            if no_new_data_flag:
                 logger.info("no new rows to upload")
             else:
                 logger.info("uploading new rows")
