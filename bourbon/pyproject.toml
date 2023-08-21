@@ -19,6 +19,7 @@ prefect = "^2.7.12"
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"
 pytest-asyncio = "^0.21.0"
+matplotlib = "^3.7.2"
 
 [tool.poetry.group.ds.dependencies]
 ipykernel = "^6.17.1"
