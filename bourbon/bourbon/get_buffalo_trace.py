@@ -25,8 +25,7 @@ async def buffalo_trace_avail(my_page: Page) -> pd.DataFrame:
 
     # selector
     title_sel = "div.cmp-title > h3"
-    avail_sel = "div > div > div.htmlblock.section > div > div.product-availability-text > h4.product-is-available"
-
+    
     # the time updated
     # the time updated
     update_time = await my_page.locator(

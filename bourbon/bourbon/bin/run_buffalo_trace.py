@@ -54,9 +54,10 @@ if __name__ == "__main__":
                 update_time_txt
             ).fetchone()[0]
 
+            product_time = new_products.loc[0, "product_update_time"]
             new_data_flag = (
                 # noqa: E501
-                latest_update_time == new_products.loc[0, "product_update_time"]
+                latest_update_time == product_time
             )
 
             if new_data_flag:
