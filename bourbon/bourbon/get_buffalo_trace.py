@@ -11,7 +11,7 @@ with resources.path("bourbon.logs", "utility.log") as f:
     log_path = f.absolute()
 
 
-logger = setup_log(log_path=log_path, logger_name=__name__)
+logger = setup_log(log_path=log_path, logger_name='buffalo_trace')
 
 
 async def buffalo_trace_avail(my_page: Page) -> pd.DataFrame:
