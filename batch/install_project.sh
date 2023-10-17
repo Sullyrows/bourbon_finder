@@ -25,3 +25,9 @@ poetry config virtualenvs.path "$PWD/.venv"
 echo "Poetry installed! Saved to \"$PWD/.venv\""
 
 cd $RESTORE_DIR
+
+# install playwright
+export PATH="$PATH:/workspaces/bourbon/.venv/bin"
+
+# chromium install
+playwright install chromium

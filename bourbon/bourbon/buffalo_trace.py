@@ -1,9 +1,9 @@
+from importlib import resources
+from .log_fx import setup_log
 import pandas as pd
 from playwright.sync_api import Page
-from importlib import resources
 import datetime as dt
 import re
-from .log_fx import setup_log
 
 
 # test logger config
@@ -31,7 +31,7 @@ async def buffalo_trace_avail(my_page: Page) -> pd.DataFrame:
     update_time = await my_page.locator(
         "#container-eed96a5a0f > div > div:nth-child(2) > div > h2"
     ).text_content()
-    mid_parse = re.findall(r"(?<=Updated: ).+", update_time, re.DOTALL)[0]
+    mid_parse = re.findall(r"(?<=Updated[ |:])(.+)", update_time, re.DOTALL)[0]
     full_parse = dt.datetime.strptime(mid_parse, "%I:%M %p  %m/%d/%Y")
 
     # get icon status evaluate

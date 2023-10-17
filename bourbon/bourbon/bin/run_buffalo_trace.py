@@ -1,5 +1,5 @@
 from playwright.async_api import async_playwright
-from bourbon.get_buffalo_trace import buffalo_trace_avail
+from bourbon.buffalo_trace import buffalo_trace_avail
 import asyncio
 import pandas as pd
 import sqlalchemy

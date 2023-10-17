@@ -1,1 +1,1 @@
-from .buffalo_trace import buffalo_trace_main
+from .run_buffalo_trace import buffalo_trace_avail

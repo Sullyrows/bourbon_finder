@@ -3,7 +3,7 @@ import pytest_asyncio
 import pandas as pd
 import asyncio
 from playwright.async_api import async_playwright, expect
-from get_buffalo_trace import buffalo_trace_avail
+from buffalo_trace import buffalo_trace_avail
 
 # required asyncio event loop fixture 
 @pytest.fixture(scope="session")

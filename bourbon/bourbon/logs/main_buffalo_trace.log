@@ -4319,3 +4319,6 @@
 [11:23:55] {/home/runner/work/bourbon_finder/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:65} INFO - no new rows to upload
 [11:44:10] {/home/runner/work/bourbon_finder/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:47} INFO - Sqlalchemy running on version 3.37.2
 [11:44:10] {/home/runner/work/bourbon_finder/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:65} INFO - no new rows to upload
+[03:54:29] {/workspaces/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:47} INFO - Sqlalchemy running on version 3.31.1
+[03:54:29] {/workspaces/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:67} INFO - uploading new rows
+[03:54:29] {/workspaces/bourbon_finder/bourbon/bourbon/bin/run_buffalo_trace.py:72} INFO - wrote 8 rows
